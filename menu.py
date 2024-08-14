@@ -1,7 +1,19 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-menu = [
-    [InlineKeyboardButton(text="Статистика", callback_data="All")]
+start_menu = [
+    [InlineKeyboardButton(text="Статистика", callback_data="All")],
+    [InlineKeyboardButton(text="Диапазон", callback_data="Range")]
 ]
+start_menu = InlineKeyboardMarkup(inline_keyboard=start_menu)
 
-menu = InlineKeyboardMarkup(inline_keyboard=menu)
+date_menu1 = [
+    [InlineKeyboardButton(text="Выбрать дату", callback_data="Another date")],
+    [InlineKeyboardButton(text="Неважно", callback_data="Nevermind")]
+]
+date_menu1 = InlineKeyboardMarkup(inline_keyboard=date_menu1)
+
+date_menu2 = [
+    [InlineKeyboardButton(text="Сегодня", callback_data="Today")],
+    [InlineKeyboardButton(text="Выбрать дату", callback_data="Another date")]
+]
+date_menu2 = InlineKeyboardMarkup(inline_keyboard=date_menu2)
