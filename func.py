@@ -25,4 +25,4 @@ def get_count(collection, date1=False, date2=False):
 
 
 def string_range_date(date1, date2):
-    return f'{date1.strftime("%d-%m-%Y")} - {date2.strftime('%d-%m-%Y')}\n\n' if date1 else f"До {date2.strftime("%d-%m-%Y")}\n\n"
+    return f'{date1.strftime("%d.%m.%Y")} – {date2.strftime('%d.%m.%Y')}\n\n' if date1 else f"До {date2.strftime("%d.%m.%Y")}\n\n"

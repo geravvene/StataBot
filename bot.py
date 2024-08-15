@@ -3,38 +3,22 @@ import logging
 import sys
 from datetime import datetime
 
-from aiogram import Bot, Dispatcher, F
-from aiogram.client.default import DefaultBotProperties
-from aiogram.enums import ParseMode
+from aiogram import F
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
-from aiogram import Bot, Dispatcher
+
 from aiogram.filters.callback_data import CallbackData
 from aiogram_calendar import DialogCalendar, DialogCalendarCallback, get_user_locale
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
 
 from menu import start_menu, date_menu1, date_menu2
-from calculate import get_count, string_range_date
-from db import connect, create_storage
-import config
-
-dp = Dispatcher(storage=create_storage())
-
-bot = Bot(token=config.API_TOKEN, default=DefaultBotProperties(
-    parse_mode=ParseMode.HTML))
-
-
-class Form(StatesGroup):
-    date = State()
-
-
-collection = connect("Dubrovskiy")
+from func import get_count, string_range_date
+from create_bot import bot, dp, collection, Form
 
 
 @dp.message(CommandStart())
 async def send_welcome(msg: Message):
-    await msg.answer(f'Привет, {msg.from_user.username}!', reply_markup=start_menu)
+    await msg.answer(f'Привет, {msg.from_user.username}! Выберете опцию статистики:', reply_markup=start_menu)
 
 
 @dp.callback_query(F.data == "All")
@@ -48,7 +32,7 @@ async def range_handler(callback_query: CallbackQuery):
 
 
 @dp.callback_query(F.data == "Another date")
-async def another_date_handler(callback_query: CallbackQuery, state: FSMContext):
+async def another_date_handler(callback_query: CallbackQuery):
     await callback_query.message.delete()
     await callback_query.message.answer("Выберете дату",
                                         reply_markup=await DialogCalendar(locale=await get_user_locale(callback_query.from_user)
