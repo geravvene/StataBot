@@ -35,8 +35,7 @@ async def range_handler(callback_query: CallbackQuery):
 async def another_date_handler(callback_query: CallbackQuery):
     await callback_query.message.delete()
     await callback_query.message.answer("Выберете дату",
-                                        reply_markup=await DialogCalendar(locale=await get_user_locale(callback_query.from_user)
-                                                                          ).start_calendar()
+                                        reply_markup=await DialogCalendar().start_calendar()
                                         )
 
 
@@ -61,8 +60,7 @@ async def today_handler(callback_query: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(DialogCalendarCallback.filter(), Form.date)
 async def process_dialog_calendar2(callback_query: CallbackQuery, callback_data: CallbackData, state: FSMContext):
-    selected, date = await DialogCalendar(locale=await get_user_locale(callback_query.from_user)
-                                          ).process_selection(callback_query, callback_data)
+    selected, date = await DialogCalendar().process_selection(callback_query, callback_data)
     if selected:
         await callback_query.message.delete()
         data = await state.get_data()
@@ -74,8 +72,7 @@ async def process_dialog_calendar2(callback_query: CallbackQuery, callback_data:
 
 @dp.callback_query(DialogCalendarCallback.filter())
 async def process_dialog_calendar(callback_query: CallbackQuery, callback_data: CallbackData, state: FSMContext):
-    selected, date = await DialogCalendar(locale=await get_user_locale(callback_query.from_user)
-                                          ).process_selection(callback_query, callback_data)
+    selected, date = await DialogCalendar().process_selection(callback_query, callback_data)
     if selected:
         await callback_query.message.delete()
         await state.set_state(Form.date)
