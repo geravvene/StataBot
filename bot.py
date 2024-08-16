@@ -8,7 +8,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
 
 from aiogram.filters.callback_data import CallbackData
-from aiogram_calendar import DialogCalendar, DialogCalendarCallback, get_user_locale
+from aiogram_calendar import DialogCalendar, DialogCalendarCallback
 from aiogram.fsm.context import FSMContext
 
 from menu import start_menu, date_menu1, date_menu2
