@@ -16,8 +16,7 @@ def count(collection, date1, date2):
 
     for key in symbol:
         piece = symbol[key]['Кол-во']/length
-        symbol[key]['Кол-во'] = f"{symbol[key]
-                                   ['Кол-во']} | {round(piece*100, 2)} %"
+        symbol[key]['Кол-во'] = f"{symbol[key]['Кол-во']} | {round(piece*100, 2)} %"
         symbol[key]['KPD'] = symbol[key]['PNL']/piece
         symbol[key]['PNL'] = round(symbol[key]['PNL'], 2)
         symbol[key]['KPD'] = round(symbol[key]['KPD'], 2)
