@@ -10,7 +10,7 @@ def count(collection, date1, date2):
         {"DATE": {"$gte": date1}}) if date1 and not date2 else collection.find(
             {"DATE": {"$lte": date2}}) if not date1 and date2 else collection.find()
     for row in orders:
-        order_pnl = float(row['PROFIT']) + float(row['COMMISSION'])
+        order_pnl = float(row['PROFIT']) + float(row['COMMISSION']) + float(row['SWAP'])
         pnl += order_pnl
         winrate += 1 if order_pnl > 0 else 0
         symbol[row['SYMBOL']] = symbol[row['SYMBOL']
