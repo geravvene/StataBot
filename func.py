@@ -50,7 +50,7 @@ def get_count(collection, date1=False, date2=False):
             str += f"{key} = {currencies[currency]['all'][key]}\n"
         str += "\n"
         orders= currencies[currency]['Сделки']
-        str += f"```{tabulate(orders, headers="keys", stralign='center')}```"
+        str += f"```{tabulate(orders, headers='keys', stralign='center')}```"
         str += "\n\n"
         
     return str
