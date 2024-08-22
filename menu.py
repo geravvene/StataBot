@@ -2,7 +2,12 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 start_menu = [
     [InlineKeyboardButton(text="За всё время", callback_data="All")],
-    [InlineKeyboardButton(text="Диапазон", callback_data="Range")]
+    [InlineKeyboardButton(text="Диапазон", callback_data="Range")],
+    [InlineKeyboardButton(text="За неделю", callback_data="Week")],
+    [InlineKeyboardButton(text="За месяц", callback_data="Month")],
+    [InlineKeyboardButton(text="За квартал", callback_data="Quarter")],
+    [InlineKeyboardButton(text="Включить Уведомления", callback_data="SMS")],
+    [InlineKeyboardButton(text="Выключить Уведомления", callback_data="DELETE_SMS")]
 ]
 start_menu = InlineKeyboardMarkup(inline_keyboard=start_menu)
 
